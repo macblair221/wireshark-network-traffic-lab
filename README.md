@@ -1,40 +1,44 @@
 # Local Network Traffic Analysis with Wireshark
 
-This mini-project documents a beginner network traffic analysis lab using Wireshark. The goal was to build hands-on familiarity with packet capture, display filters, and common protocols seen on a local network.
+This mini-project documents a beginner network traffic analysis lab using Wireshark. The goal was to build hands-on familiarity with packet capture, display filters, common network protocols, and privacy-aware handling of network data.
 
-All network testing and packet capturing performed for this project were conducted strictly on my own local machine and controlled testing environments. No external networks, unauthorized devices, or third-party traffic were monitored, intercepted, or analyzed.
+All testing was performed on my own machine using controlled traffic and dummy credentials. No unauthorized devices, external networks, or third-party traffic were monitored or analyzed.
 
 ## Goals
 
-- Capture and inspect network packets using Wireshark
-- Identify my host IP address, default gateway, and DNS server
+- Capture and inspect packets using Wireshark
+- Identify host, gateway, and DNS traffic
 - Observe DNS queries and responses
 - Recognize HTTPS traffic over TCP/UDP port 443
 - Identify local discovery protocols such as SSDP, mDNS, and LLMNR
-- Recognize IPv6 network discovery and maintenance traffic
-- Demonstrate how HTTP form submissions can expose cleartext data in packet captures when encryption is not used
+- Observe IPv6 network discovery traffic
+- Demonstrate how HTTP form submissions can expose cleartext data when encryption is not used
+- Export packet metadata and summarize basic traffic patterns with Python/Pandas
 
 ## Tools Used
 
 - Wireshark
 - Windows Command Prompt
+- Python/Pandas
 - `ipconfig`
 - `nslookup`
 - Web browser traffic
-- Intentionally vulnerable HTTP test site
-- Dummy credentials for controlled testing
+- Intentionally vulnerable HTTP test site using dummy credentials
 
+## Packet Metadata Analysis
 
-## Packet Metadata Analysis with Python
+After capturing traffic in Wireshark, I exported packet metadata as a CSV and used Python/Pandas to summarize basic traffic patterns, including protocol counts, packet lengths, top source/destination labels, and packet volume over time.
 
-After capturing traffic in Wireshark, I exported packet metadata as a CSV and used Python/Pandas to summarize basic traffic patterns.
+This connected packet-level inspection with basic data analysis techniques.
 
-The analysis included:
+## Data Ethics and Privacy
 
-- Packet counts by protocol
-- Top source and destination addresses
-- Packet length summary statistics
-- Packet volume over time
-- Comparison of normal encrypted web traffic and controlled HTTP cleartext form submission traffic
+Because packet captures can contain sensitive information, I avoided publishing raw packet captures. I used only controlled traffic from my own machine, dummy credentials for the HTTP demo, and redacted or replaced sensitive values such as IP addresses, MAC addresses, DNS details, and visible form data.
 
-This helped connect packet-level inspection in Wireshark with basic data analysis techniques.
+The analysis focused on metadata such as protocols, packet lengths, timing, and high-level traffic patterns rather than private payload contents.
+
+## Summary
+
+This lab helped me understand how normal network activity appears in packet captures, including DNS resolution, encrypted web traffic, local discovery protocols, IPv6 neighbor discovery, and insecure HTTP form submissions.
+
+The main takeaway was learning to start with a specific question, apply a focused Wireshark filter, and document observations while handling network data responsibly.

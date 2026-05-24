@@ -23,9 +23,9 @@ http.request.method == "POST"
 
 ### Observation
 In the packet details, Wireshark showed the submitted form fields in cleartext. The captured HTTP form data included the fields:
-  uid
-  passw
-  btnSubmit
+- uid
+- passw
+- btnSubmit
 This demonstrates that HTTP does not encrypt submitted form data. If sensitive information is submitted over HTTP, it may be visible in packet captures.
 
 

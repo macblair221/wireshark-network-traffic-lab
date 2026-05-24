@@ -13,23 +13,17 @@ All testing was performed on my own machine using controlled traffic and dummy c
 - Identify local discovery protocols such as SSDP, mDNS, and LLMNR
 - Observe IPv6 network discovery traffic
 - Demonstrate how HTTP form submissions can expose cleartext data when encryption is not used
-- Export packet metadata and summarize basic traffic patterns with Python/Pandas
+
 
 ## Tools Used
 
 - Wireshark
 - Windows Command Prompt
-- Python/Pandas
 - `ipconfig`
 - `nslookup`
 - Web browser traffic
 - Intentionally vulnerable HTTP test site using dummy credentials
 
-## Packet Metadata Analysis
-
-After capturing traffic in Wireshark, I exported packet metadata as a CSV and used Python/Pandas to summarize basic traffic patterns, including protocol counts, packet lengths, top source/destination labels, and packet volume over time.
-
-This connected packet-level inspection with basic data analysis techniques.
 
 ## Data Ethics and Privacy
 

@@ -1,38 +1,21 @@
-# Local Network Traffic Analysis with Wireshark
+# HTTP Cleartext Form Submission Analysis with Wireshark
 
-This mini-project documents a beginner network traffic analysis lab using Wireshark. The goal was to build hands-on familiarity with packet capture, display filters, common network protocols, and privacy-aware handling of network data.
+This mini-project demonstrates how HTTP form submissions can expose submitted data in cleartext when encryption is not used. I used Wireshark to capture a controlled login request sent to an intentionally vulnerable HTTP test site using dummy credentials.
 
-All testing was performed on my own machine using controlled traffic and dummy credentials. No unauthorized devices, external networks, or third-party traffic were monitored or analyzed.
-
-## Goals
-
-- Capture and inspect packets using Wireshark
-- Identify host, gateway, and DNS traffic
-- Observe DNS queries and responses
-- Recognize HTTPS traffic over TCP/UDP port 443
-- Identify local discovery protocols such as SSDP, mDNS, and LLMNR
-- Observe IPv6 network discovery traffic
-- Demonstrate how HTTP form submissions can expose cleartext data when encryption is not used
-
+The goal was to build hands-on familiarity with packet capture, HTTP traffic inspection, and privacy-aware security documentation.
 
 ## Tools Used
 
 - Wireshark
-- Windows Command Prompt
-- `ipconfig`
-- `nslookup`
-- Web browser traffic
-- Intentionally vulnerable HTTP test site using dummy credentials
+- Web browser
+- Intentionally vulnerable HTTP test site
+- Dummy credentials for controlled testing
 
+## What I Did
 
-## Data Ethics and Privacy
+I started a Wireshark capture on my own machine, visited an intentionally vulnerable HTTP login page, and submitted fake login credentials.
 
-Because packet captures can contain sensitive information, I avoided publishing raw packet captures. I used only controlled traffic from my own machine, dummy credentials for the HTTP demo, and redacted or replaced sensitive values such as IP addresses, MAC addresses, DNS details, and visible form data.
+I then filtered the capture using:
 
-The analysis focused on metadata such as protocols, packet lengths, timing, and high-level traffic patterns rather than private payload contents.
-
-## Summary
-
-This lab helped me understand how normal network activity appears in packet captures, including DNS resolution, encrypted web traffic, local discovery protocols, IPv6 neighbor discovery, and insecure HTTP form submissions.
-
-The main takeaway was learning to start with a specific question, apply a focused Wireshark filter, and document observations while handling network data responsibly.
+```text
+http.request.method == "POST"
